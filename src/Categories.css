@@ -1,0 +1,75 @@
+/* Container padding */
+.categories-wrap {
+  padding: 50px 8%;
+  background-color: #fffefe;
+}
+
+/* 1. The Header: Title Left, Tabs Right */
+.header-category {
+  background-color: white; /* The inner fill */
+  padding: 40px;
+  border-radius: 8px; /* Optional: adds rounded corners */
+  
+  /* The Magic: x-offset, y-offset, blur, spread, color */
+  box-shadow: 0px 10px 30px 5px rgba(230, 233, 235, 0.4); 
+ display: flex;
+  justify-content: space-between;
+}
+
+.header-category h1 {
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* 2. The Tabs (Navigation Links) */
+.categories-tabs {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+.categories-tabs .link {
+  text-decoration: none;
+  color: #6d2222;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  background-color: #c4bcbc;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* 3. Active & Hover States */
+.categories-tabs .link:hover {
+  background-color: #084a0e;
+  color: #27ae60;
+}
+
+/* React Router automatically applies the 'active' class to the current NavLink */
+.categories-tabs .link.active {
+  background-color: #27ae60;
+  color: white;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+}
+
+/* 4. Content Area (where Fruits/Veggies appear) */
+.category-content {
+  padding-top: 20px;
+}
+
+/* 5. Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header-category {
+    flex-direction: column;
+     /* Stack title and tabs vertically on small screens */
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .categories-tabs {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto; /* Allow scrolling if tabs are too wide for phone */
+    padding-bottom: 10px;
+  }
+}
