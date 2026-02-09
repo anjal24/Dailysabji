@@ -17,8 +17,10 @@ const All = () => {
   }, []);
 
   // data split
-  const fruits = data.filter((item) => item.type === "fruit");
-  const vegetables = data.filter((item) => item.type === "vegetable");
+  const fruits = data.filter((item) => item.service.serviceName === "Fruits");
+
+
+  const vegetables = data.filter((item) => item.type === "Vegetables");
 
   return (
     <div className="browse-content">

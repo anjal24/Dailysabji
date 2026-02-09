@@ -3,6 +3,8 @@ import "./header.css";
 const BASE_URL = "https://dailysabji.com/";
 
 const Fruits = ({ fruitsData = [] }) => {
+
+  console.log(fruitsData,"fruitsData")
   return (
     <div className="fruit-container">
       <h1>Fruits</h1>
@@ -19,7 +21,7 @@ const Fruits = ({ fruitsData = [] }) => {
           <div>
             {/* ✅ CONCAT HERE */}
             <img
-              src={"https://dailysabji.com/assets/subservices/Ginger.png"}
+              src={`${BASE_URL}${item?.subServiceImageUrl}`}
               alt={item.subServiceName}
             />
           </div>
