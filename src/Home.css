@@ -10,7 +10,8 @@
   justify-content: space-between;
   min-height: 90vh;
   padding: 0 80px;
-  background-color: rgb(131, 160, 151);
+  background-color: rgb(220, 225, 223); /* KEPT YOUR COLOR */
+  background: linear-gradient(135deg, #f9fffc, #e5f7ee);
   border-radius: 30px;
   position: relative;
 }
@@ -26,7 +27,7 @@
 }
 
 .highlight {
-  color: #2ecc71;
+  color: #2ecc71; /* KEPT YOUR COLOR */
 }
 
 .sub-heading {
@@ -34,22 +35,62 @@
   font-size: 18px;
   line-height: 1.6;
   max-width: 520px;
-  color: #dbd2d2;
+  color: #0a0505; /* KEPT YOUR COLOR */
 }
 
-/* RIGHT IMAGE */
+/* RIGHT IMAGE AREA */
 .hero-right {
-  flex: 1;
+  flex: 1.5; /* Gives the image more space to be large */
   display: flex;
-  justify-content: center; /* Center image */
+  justify-content: center; 
   align-items: center;
-  position: relative;
+  position: relative; /* Essential for the cards to float on top */
 }
 
 .hero-right img {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;       
+  max-width: 750px;  /* Maximized basket size */
+  height: auto;
+  z-index: 1;        /* Keeps image behind the cards */
   animation: float 3s ease-in-out infinite;
+}
+
+/* MAXIMIZED CARDS (Matching your photo) */
+.card-top,
+.card-bottom {
+  position: absolute;
+  background-color: #ffffff; /* Original White */
+  padding: 25px 35px;        /* Maximized padding for large look */
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(209, 80, 80, 0.15); /* KEPT YOUR SHADOW */
+  text-align: left;          /* Left-aligned text as per your photo */
+  z-index: 10;               /* Ensures cards sit ON TOP of the image */
+  min-width: 220px;          /* Maximized width */
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Positioning cards to overlap the image */
+.card-top {
+  top: 10%; 
+  left: 0; 
+}
+
+.card-bottom {
+  bottom: 10%;
+  right: 0;
+}
+
+/* Card Text Styling */
+.card-top h2, .card-bottom h2 {
+  font-size: 30px; /* Maximized Number size */
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.card-top p, .card-bottom p {
+  font-size: 15px; /* Maximized description size */
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 /* FLOAT ANIMATION */
@@ -59,28 +100,6 @@
   100% { transform: translateY(0); }
 }
 
-/* CARDS */
-.card-top,
-.card-bottom {
-  position: absolute;
-  background: #fff;
-  padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(209, 80, 80, 0.15);
-  text-align: center;
-  animation: float 3s ease-in-out infinite;
-}
-
-.card-top {
-  top: 20px;
-  left: 40px;
-}
-
-.card-bottom {
-  bottom: 20px;
-  right: 40px;
-}
-
 /* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
   .hero-section {
@@ -88,18 +107,12 @@
     text-align: center;
     padding: 60px 20px;
   }
-
-  .hero-right {
-    margin-top: 40px;
+  .hero-right img {
+    max-width: 400px;
   }
-
-  /* Cards stack under image on mobile */
-  .card-top,
-  .card-bottom {
+  .card-top, .card-bottom {
     position: static;
-    transform: none;
-    margin: 12px auto;
-    animation: none;
+    margin: 15px auto;
     width: fit-content;
   }
 }

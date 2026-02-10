@@ -1,4 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Home from "./Home";
 import About from "./About";
 import Login from "./Login";
@@ -9,27 +12,43 @@ import Fruits from "./Fruits";
 import Vegetables from "./Vegetables";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dailysabji.com/dsapi/subservices/generic")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      });
+  }, []);
+  const fruits = data.filter((item) => item.service.serviceName === "Fruits");
+
+  const vegetables = data.filter(
+    (item) => item.service.serviceName === "Vegetables",
+  );
+
   return (
-    <>
-      <Routes>
-        {/* --- Everything in this group SHOWS the Navbar --- */}
-        <Route element={<Navbar />}>
-          <Route path="/" element={<Home />}>
-            <Route index element={<All />} />
-            <Route path="fruits" element={<Fruits />} />
-            <Route path="vegetables" element={<Vegetables />} />
-          </Route>
-          <Route path="/about" element={<About />} />
+    <Routes>
+      <Route element={<Navbar />}>
+        <Route path="/" element={<Home />}>
+          {/* 👇 DATA PASS HERE */}
+          <Route index element={<All data={data} />} />
+          <Route path="fruits" element={<Fruits fruitsData={data} />} />
+          <Route
+            path="vegetables"
+            element={<Vegetables vegetablesData={data} />}
+          />
         </Route>
 
-        {/* --- Everything below this does NOT show the Navbar --- */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+      </Route>
 
-        {/* Redirect for 404s */}
-        <Route path="/*" element={<Navigate to="/" />} />
-      </Routes>
-    </>
+      <Route path="/login" element={<Login />} />
+      <Route path="/contact" element={<Contact />} />
+
+      <Route path="/*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 

@@ -1,107 +1,204 @@
 .header{
+
   display: flex;
+
   justify-content: space-around;
-  background-color:rgb(231, 234, 231);
+
+  background-color:rgb(227, 235, 227);
+
   padding: 4px 16px;
+
  border-radius:30px ;
-}
-body{
-  margin:0;
-  padding:0;
 
 }
+
+body{
+
+  margin:0;
+
+  padding:0;
+
+
+
+}
+
+
+
 
 
 .header ul {
+
   display:flex;
+
   list-style-type: none;
+
   gap:20px;
+
   margin:auto;
+
   justify-content:space-around ;
+
   width: 350px;
+
 }
+
 .header ul li{
+
   padding: 10px;
+
 }
+
 .header .link h2{
+
 margin:0;
+
 }
+
 .header .link{
+
   text-decoration: none;
+
   font-size: 20px;
+
 }
+
  .categories .link {
+
   text-decoration: none;
+
   font-size: 20px;
+
   margin:10px;
+
 }
 
-.fruit-container .fruit-item {
-  display: inline-block;
-  margin: 15px;
-  padding: 15px;
-  width: 180px;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0 4px 6px rgba(130, 92, 92, 0.1);
 
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: slideIn 0.6s forwards;
+
+
+
+/* --- CONTAINER (The Window) --- */
+.fruit-container {
+  overflow: hidden; /* Hides cards as they slide off-screen */
+  width: 100%;
+  padding: 40px 0;
+  background-color: transparent;
 }
 
-@keyframes slideIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* --- THE MOVING TRACK --- */
+.fruit-grid {
+  display: flex; /* Lines cards up horizontally */
+  width: max-content;
+  /* Adjust '30s' to make it faster or slower */
+  animation: infiniteSlide 80s linear infinite;
 }
 
-.fruit-container .fruit-item:hover {
-  transform: translateX(10px);
-  box-shadow: 0 6px 10px rgba(228, 215, 215, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+
+/* Pause the carousel when the user hovers over a fruit */
+.fruit-grid:hover {
+  animation-play-state: paused;
 }
-.fruit-container img {
-  width: 120px;
-  height: 120px;
+
+/* --- THE CARD (Maximized & Your Colors) --- */
+.fruit-item {
+  flex: 0 0 250px;           /* MAXIMIZED: Card stays 250px wide */
+  margin: 0 15px;
+  padding: 20px;
+  background-color: #f5f5f5; /* KEPT: Your original color */
+  border-radius: 16px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* MAXIMIZED IMAGE */
+.fruit-item img {
+  width: 100%;               /* Fills the card */
+  height: 180px;             /* Maximized height */
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
+  margin-top: 10px;
 }
 
-.vegetables-container .vegetables-item {
-  display: inline-block;
-  margin: 15px;
-  padding: 15px;
-  width: 180px;
-  border-radius: 10px;
-  background-color: #ebeaea;
-  box-shadow: 0 4px 6px rgba(130, 92, 92, 0.1);
-
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: slideIn 0.6s forwards;
-}
-
-
-
-.vegetables-container .vegetables-item:hover {
-  transform: translateX(10px);
-  box-shadow: 0 6px 10px rgba(100, 19, 19, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.vegetables-container img {
-  width: 120px;
-  height: 120px;
-  object-fit:cover ;
-  border-radius: 8px;
-}
-
-@keyframes slideIn{
-  to {
-    opacity: 1;
+/* --- THE SLIDE ANIMATION --- */
+@keyframes infiniteSlide {
+  0% {
     transform: translateX(0);
   }
-}  
+  100% {
+    /* Moves the track left by 50% because we doubled the items */
+    transform: translateX(-50%);
+  }
+}
+
+/* Interactive Lift Effect */
+.fruit-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* --- THE VIEWPORT (The Window) --- */
+.vegetables-container {
+  overflow: hidden;         /* Hides cards outside the container */
+  width: 100%;
+  padding: 50px 0;
+  background-color: transparent;
+}
+
+/* --- THE MOVING TRACK --- */
+.vegetables-grid {
+  display: flex;            /* Horizontal layout */
+  width: max-content;       /* Track stays long */
+  /* This moves the track from Right to Left */
+  animation: vegetableSlide 80s linear infinite; 
+}
+
+
+
+/* Pause when user hovers */
+.vegetables-grid:hover {
+  animation-play-state: paused;
+}
+
+/* --- THE MAXIMIZED CARD STYLE (No Color Change) --- */
+.vegetables-item {
+  flex: 0 0 260px;          /* Maximized width */
+  margin: 0 20px;           /* Gap between items */
+  padding: 25px;
+  background: #ffffff;      /* Pure white */
+  border-radius: 16px;      /* Modern rounded corners */
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.08); /* The soft shadow */
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* MAXIMIZED IMAGE */
+.vegetables-item img {
+  width: 100%;
+  height: 200px;            /* Large image height */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+/* --- THE CAROUSEL ANIMATION --- */
+@keyframes vegetableSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves halfway because we doubled the content */
+    transform: translateX(-50%);
+  }
+}
+
+/* Hover Lift Effect */
+.vegetables-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
 
 

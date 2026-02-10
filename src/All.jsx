@@ -1,33 +1,16 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Fruits from "./Fruits";
 import Vegetables from "./Vegetables";
 
-const All = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://dailysabji.com/dsapi/subservices/generic") // single backend API
-      .then((res) => {
-        console.log(res.data); // ✅ yahin valid hai
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  // data split
-  const fruits = data.filter((item) => item.service.serviceName === "Fruits");
-
-
-  const vegetables = data.filter((item) => item.type === "Vegetables");
-
+const All = ({ data = [] }) => {
   return (
-    <div className="browse-content">
-      <Fruits fruitsData={fruits} />
-      <Vegetables vegetablesData={vegetables} />
+    <div className="all-products-view">
+      <div className="sections-wrapper">
+        <Fruits fruitsData={data} />
+        <br />
+        <Vegetables vegetablesData={data} />
+      </div>
     </div>
   );
 };
-
+// At the bottom of All.jsx
 export default All;
