@@ -13,40 +13,58 @@ import Vegetables from "./Vegetables";
 
 function App() {
   const [data, setData] = useState([]);
+  // 1. ADDED SHARED INDEX FOR SYNC
+  const [sharedIndex, setSharedIndex] = useState(0);
 
   useEffect(() => {
     axios
       .get("https://dailysabji.com/dsapi/subservices/generic")
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       });
   }, []);
-  const fruits = data.filter((item) => item.service.serviceName === "Fruits");
 
-  const vegetables = data.filter(
-    (item) => item.service.serviceName === "Vegetables",
+  // 2. SHARED TIMER: Tells both components to move together
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSharedIndex((prev) => prev + 1);
+    }, 3000); // Jump every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const fruits = data.filter((item) => item?.service?.serviceName === "Fruits");
+  const vegetables = data?.filter(
+    (item) => item?.service?.serviceName === "Vegetables",
   );
 
   return (
     <Routes>
       <Route element={<Navbar />}>
         <Route path="/" element={<Home />}>
-          {/* 👇 DATA PASS HERE */}
-          <Route index element={<All data={data} />} />
-          <Route path="fruits" element={<Fruits fruitsData={data} />} />
+          <Route
+            index
+            element={<All data={data} sharedIndex={sharedIndex} />}
+          />
+
+          {/* 3. PASS THE SHARED INDEX TO BOTH */}
+          <Route
+            path="fruits"
+            element={<Fruits fruitsData={fruits} sharedIndex={sharedIndex} />}
+          />
           <Route
             path="vegetables"
-            element={<Vegetables vegetablesData={data} />}
+            element={
+              <Vegetables
+                vegetablesData={vegetables}
+                sharedIndex={sharedIndex}
+              />
+            }
           />
         </Route>
-
         <Route path="/about" element={<About />} />
       </Route>
-
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
-
       <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );

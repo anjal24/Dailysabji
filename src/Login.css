@@ -2,71 +2,68 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 100vh; /* Changed from 80vh to fill the whole screen */
   background-color: #f9f9f9;
 }
 
 .login-card {
   background: white;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 15px;
-  /* That blue glow effect you liked */
-  box-shadow: 0px 15px 35px rgba(0, 150, 255, 0.15);
+  padding: 60px;             /* LARGER: Increased from 40px */
+  width: 90%;                /* Flexible width for responsiveness */
+  max-width: 600px;          /* LARGER: Increased from 400px */
+  border-radius: 20px;       /* Slightly more rounded for the larger size */
+  box-shadow: 0px 20px 50px rgba(0, 150, 255, 0.2); /* Stronger glow */
   text-align: center;
 }
 
 .login-card h2 {
   font-family: serif;
-  margin-bottom: 10px;
+  font-size: 2.5rem;         /* LARGER: Significant header size */
+  margin-bottom: 20px;
 }
 
 .input-group {
   text-align: left;
-  margin-top: 20px;
+  margin-top: 25px;          /* More spacing between fields */
 }
 
 .input-group label {
   display: block;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-  color: #555;
+  font-size: 1.1rem;         /* LARGER label text */
+  margin-bottom: 8px;
+  color: #333;               /* Slightly darker for better readability */
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 16px;             /* LARGER input area */
+  font-size: 1.1rem;         /* LARGER typing text */
+  border: 1px solid #ccc;
+  border-radius: 10px;
   box-sizing: border-box;
 }
 
 .login-btn {
   width: 100%;
-  padding: 14px;
-  background-color: #4caf50; /* Green theme */
+  padding: 18px;             /* LARGER Button */
+  font-size: 1.2rem;         /* LARGER Button text */
+  background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 40px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .login-btn:hover {
   background-color: #43a047;
-}
-
-.error-text {
-  color: #ff4d4d;
-  font-size: 0.8rem;
-  margin-top: 5px;
+  transform: scale(1.02);    /* Subtle grow effect on hover */
 }
 
 .login-footer {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #777;
+  margin-top: 30px;
+  font-size: 1.1rem;         /* LARGER footer text */
+  color: #666;
 }

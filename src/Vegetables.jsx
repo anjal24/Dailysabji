@@ -1,31 +1,31 @@
 import "./header.css";
-
-const BASE_URL = "https://dailysabji.com/";
-
-const Vegetables = ({ vegetablesData = [] }) => {
-  // 👉 vegetables filter
-  const vegetables = vegetablesData.filter(
-    (item) => item.service?.serviceName === "Vegetables",
-  );
-
-  // WE DOUBLE THE LIST: This makes the loop seamless
-  const slidingVegetables = [...vegetables, ...vegetables];
+const Vegetables = ({ vegetablesData = [], sharedIndex }) => {
+  // Use modulo so index stays within the array length
+  const safeIndex =
+    vegetablesData.length > 0 ? sharedIndex % vegetablesData.length : 0;
+  const moveDistance = safeIndex * 270; // 250px + 20px gap
 
   return (
-    <div className="vegetables-container">
+    <div className="vegetable-container">
       <h1>Vegetables</h1>
-
-      {/* 1. Added the track wrapper for the carousel animation */}
-      <div className="vegetables-grid">
-        {slidingVegetables.map((item, index) => (
-          <div key={`${item.id}-${index}`} className="vegetables-item">
-            <h2>{item.subServiceName}</h2>
-            <img
-              src={`${BASE_URL}${item.subServiceImageUrl}`}
-              alt={item.subServiceName}
-            />
-          </div>
-        ))}
+      <div className="carousel-window">
+        <div
+          className="new-carousel-track"
+          style={{
+            transform: `translateX(-${moveDistance}px)`,
+            transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)", // The "No Jhatka" glide
+          }}
+        >
+          {vegetablesData.map((item, i) => (
+            <div key={i} className="vegetables-item">
+              <h2>{item.subServiceName}</h2>
+              <img
+                src={`https://dailysabji.com/${item.subServiceImageUrl}`}
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

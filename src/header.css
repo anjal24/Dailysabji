@@ -73,132 +73,52 @@ margin:0;
 }
 
 
-
-
-
-/* --- CONTAINER (The Window) --- */
-.fruit-container {
-  overflow: hidden; /* Hides cards as they slide off-screen */
+/* 1. The "Window" - Only shows what fits on screen */
+.carousel-window {
+  overflow: hidden; 
   width: 100%;
-  padding: 40px 0;
-  background-color: transparent;
+  padding: 30px 0; /* Extra padding so cards don't get cut off when they hover/zoom */
 }
 
-/* --- THE MOVING TRACK --- */
-.fruit-grid {
-  display: flex; /* Lines cards up horizontally */
-  width: max-content;
-  /* Adjust '30s' to make it faster or slower */
-  animation: infiniteSlide 80s linear infinite;
+/* 2. The "Track" - This is the long row of cards */
+.new-carousel-track, .fruit-slider-track {
+  display: flex;
+  gap: 20px;
+  will-change: transform; /* Helps browser keep the slide smooth */
 }
 
-
-
-
-/* Pause the carousel when the user hovers over a fruit */
-.fruit-grid:hover {
-  animation-play-state: paused;
-}
-
-/* --- THE CARD (Maximized & Your Colors) --- */
-.fruit-item {
-  flex: 0 0 250px;           /* MAXIMIZED: Card stays 250px wide */
-  margin: 0 15px;
-  padding: 20px;
-  background-color: #f5f5f5; /* KEPT: Your original color */
-  border-radius: 16px;
-  border: 1px solid #f1f1f1;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+/* 3. Your Card Style (Updated) */
+.vegetables-item, .fruit-card {
+  flex: 0 0 250px; /* Essential for the jump math */
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+  cursor: pointer;
 }
 
-/* MAXIMIZED IMAGE */
-.fruit-item img {
-  width: 100%;               /* Fills the card */
-  height: 180px;             /* Maximized height */
-  object-fit: cover;
-  border-radius: 12px;
-  margin-top: 10px;
+/* 4. Hover Effect - Row keeps moving, but card pops up */
+.vegetables-item:hover, .fruit-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  z-index: 10;
 }
 
-/* --- THE SLIDE ANIMATION --- */
-@keyframes infiniteSlide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Moves the track left by 50% because we doubled the items */
-    transform: translateX(-50%);
-  }
-}
-
-/* Interactive Lift Effect */
-.fruit-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-}
-
-/* --- THE VIEWPORT (The Window) --- */
-.vegetables-container {
-  overflow: hidden;         /* Hides cards outside the container */
+.vegetables-item img, .fruit-card img {
   width: 100%;
-  padding: 50px 0;
-  background-color: transparent;
+  height: 150px;
+  object-fit: contain;
 }
-
-/* --- THE MOVING TRACK --- */
-.vegetables-grid {
-  display: flex;            /* Horizontal layout */
-  width: max-content;       /* Track stays long */
-  /* This moves the track from Right to Left */
-  animation: vegetableSlide 80s linear infinite; 
-}
-
-
-
-/* Pause when user hovers */
-.vegetables-grid:hover {
-  animation-play-state: paused;
-}
-
-/* --- THE MAXIMIZED CARD STYLE (No Color Change) --- */
-.vegetables-item {
-  flex: 0 0 260px;          /* Maximized width */
-  margin: 0 20px;           /* Gap between items */
-  padding: 25px;
-  background: #ffffff;      /* Pure white */
-  border-radius: 16px;      /* Modern rounded corners */
-  border: 1px solid #f1f1f1;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.08); /* The soft shadow */
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-/* MAXIMIZED IMAGE */
-.vegetables-item img {
+.carousel-window {
   width: 100%;
-  height: 200px;            /* Large image height */
-  object-fit: cover;
-  border-radius: 12px;
-  margin-top: 12px;
+  overflow: hidden; /* Bahar ki cheezein chhupane ke liye */
+  padding: 20px 0;
 }
 
-/* --- THE CAROUSEL ANIMATION --- */
-@keyframes vegetableSlide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Moves halfway because we doubled the content */
-    transform: translateX(-50%);
-  }
+.fruit-slider-track, .new-carousel-track {
+  display: flex;
+  gap: 20px;
+  /* transition humne inline style (Fruits.jsx) mein likhi hai, wo sahi hai */
 }
-
-/* Hover Lift Effect */
-.vegetables-item:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-}
-
-
