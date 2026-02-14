@@ -116,3 +116,575 @@
     width: fit-content;
   }
 }
+
+
+
+/* Container Layout */
+.Whywebest-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 10%;           /* Flexible side padding */
+  background-color: #f9fbf9; 
+  gap: 50px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Left Section */
+.Section-left {
+  flex: 1.2;                  /* Gives text a bit more room */
+}
+
+.Heading {
+  font-size: 38px;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Individual Feature Cards - CLEANED */
+.feature-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  border: none !important;     /* REMOVES THE GREEN LINE */
+  border-left: none !important; /* DOUBLE INSURANCE */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Softer, modern shadow */
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove any pseudo-elements that might create lines */
+.feature-card::before, .feature-card::after {
+  display: none !important;
+  content: none !important;
+}
+
+.feature-card:hover {
+  transform: translateX(10px); /* Slides slightly right on hover instead of lifting */
+}
+
+.feature-card h2 {
+  font-size: 20px;
+  color: #2f7a1b;             /* Fresh green for titles */
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.feature-card p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Right Image Section */
+.section-right {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-right img {
+  max-width: 100%;            /* Responsive width */
+  height: auto;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Responsive fix */
+@media (max-width: 1024px) {
+  .Whywebest-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* 4th page */
+/* Ensure no scrollbars and full-screen reach */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.store-section {
+  width: 100%;
+  padding:60px 5%;
+  border-radius: 30px;
+  box-shadow: 0 15px 45px #00000014;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ background: linear-gradient(135deg, #f2fff4, #8be793);
+}
+.store-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:100px;
+}
+
+/* LEFT SIDE: Image styling */
+.store-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.store-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  /* That subtle white rounded background in your photo */
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+/* RIGHT SIDE: Text and Actions */
+.store-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+      color: #3bb77e;
+}
+
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.heading {
+  font-size: 42px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+
+.subtext {
+  font-size: 16px;
+    margin-bottom: 25px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* OFFER BOX ANIMATION */
+/* --- ANIMATIONS --- */
+
+/* Entrance animation: Box grows from nothing to full size */
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Continuous pulse: Very subtle breathing effect */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  50% {
+    transform: scale(1.03); /* Increased slightly for visibility */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.offer-box {
+  background: #dfffe7;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d7a46;
+  width: fit-content;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px #0000000f;
+  
+  /* Applying both animations */
+  /* popIn happens once for 0.9s | pulse starts after and repeats forever */
+  animation: popIn 0.9s ease forwards, pulse 2.5s infinite ease-in-out 0.9s;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* BUTTON ANIMATION */
+.order-btn {
+  background: #3bb77e;
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .35s;
+    font-weight: 600;
+    box-shadow: 0 6px 14px #0000001a;
+}
+
+.small-note {
+  margin-top: 15px;
+    font-size: 12px;
+    color: #1e1d1d;
+    opacity: .9;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .store-content {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 20px;
+    width: 100%;
+    gap:50px;
+    text-align: center;
+  }
+  .heading { font-size: 2.5rem; }
+}
+
+/* 6th page */
+/* --- SECTION CONTAINER --- */
+.downloadApp {
+  position: relative; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 80px 10%;
+  background-color: #f4f7f2; 
+  overflow: hidden; 
+  gap: 20px;
+}
+
+/* --- GLOW EFFECT & ANIMATION --- */
+.downloadApp::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: #2ecc712e; 
+  top: -70px;
+  left: -70px;
+  border-radius: 50%;
+  filter: blur(50px); 
+  animation: floatGlow 7s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+/* --- CONTENT LAYER --- */
+.AppImage, .AppDetails {
+  position: relative;
+  z-index: 1; 
+}
+
+/* --- PHONE IMAGE --- */
+.AppImage img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 35px; 
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.AppImage img:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* --- H1 HOVER ANIMATION --- */
+.Heading h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #004d00; /* Dark Green */
+  cursor: pointer;
+  transition: all 0.4s ease; /* Smooth color and move transition */
+}
+
+.Heading h1:hover {
+  color: #2ecc71; /* Light Green on hover */
+  transform: translateX(15px); /* Slide right */
+}
+
+/* --- STORE BADGES HOVER --- */
+.PlayStoreLink img {
+  height: 45px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.PlayStoreLink img:hover {
+  transform: translateY(-5px) scale(1.05); /* Float up and grow slightly */
+  filter: brightness(1.1); /* Glow effect */
+}
+
+/* --- QR CODES HOVER --- */
+.QR-Image img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  background: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.QR-Image img:hover {
+  transform: scale(1.1); /* Pop out effect */
+  border-color: #2ecc71; /* Border turns green */
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2); /* Green shadow */
+}
+
+/* --- LAYOUTS --- */
+.AppLink {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.PlayStoreLink {
+  display: flex;
+  gap: 45px;
+}
+
+.QR-Image {
+  display: flex;
+  gap: 24px;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 992px) {
+  .downloadApp {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 5%;
+  }
+
+  .Heading h1 {
+    font-size: 2.2rem;
+  }
+
+  .Heading h1:hover {
+    transform: none; /* Disable slide on mobile */
+  }
+
+  .PlayStoreLink, .QR-Image {
+    justify-content: center;
+  }
+
+  .AppImage img {
+    max-width: 240px;
+    margin-bottom: 20px;
+  }
+}
+/*7th page */
+/* Main Footer Styling */
+.footer {
+  background-color: #f9fbf9; /* Matching the soft light theme */
+  padding: 60px 10% 20px;
+  border-top: 1px solid #e0e0e0;
+  color: #444;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Individual Columns */
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-col .logo {
+  font-size: 1.8rem;
+  color: #27ae60; /* Brand Green */
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.footer-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons svg {
+  font-size: 1.4rem;
+  color: #27ae60;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.social-icons svg:hover {
+  transform: translateY(-3px);
+  color: #1e8449;
+}
+
+/* Links and Lists */
+.footer-col h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #27ae60;
+}
+
+/* App Buttons Section */
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.app-buttons img {
+  height: 40px;
+  width: auto;
+  transition: opacity 0.3s;
+}
+
+.app-buttons img:hover {
+  opacity: 0.8;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #666;
+  margin: 0 5px;
+}
+
+.footer-links a:hover {
+  color: #27ae60;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .app-buttons {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+
+.app-buttons a {
+  display: inline-block;  
+  transition: transform 0.3s ease-in-out; /* Smoothly transitions the size */
+  margin-bottom: 10px;
+  
+}
+
+.app-buttons a:hover {
+  /* This creates the zoom effect */
+  transform: scale(1.1); /* Increases size by 10% */
+}
+
+.app-buttons img {
+  height: 45px; /* Adjust height as needed */
+  width: auto;
+  border-radius: 5px; /* Optional: rounds the edges of the badges */
+  display: block;
+}
