@@ -43,8 +43,8 @@ function App() {
     <Routes>
       <Route element={<Navbar />}>
         <Route path="cart" element={<Cart />} />
-        {/* shop */}
-        {/* App.jsx mein shop route ko aise update karein */}
+        {/* shop  route update*/}
+
         <Route path="shop" element={<Shop data={data} />} />
         <Route path="shop/:id" element={<Shop data={data} />} />
         <Route path="/" element={<Home />}>

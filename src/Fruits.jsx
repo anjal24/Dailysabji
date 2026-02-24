@@ -35,7 +35,7 @@ const Fruits = ({ fruitsData = [], sharedIndex }) => {
 
             return (
               <div key={item.subServiceName} className="fruit-card">
-                {/* --- FIX: Link ke ANDAR Name aur Image ko daala gaya hai --- */}
+                {/* --- here name and image are inside of link--- */}
                 <Link
                   to={`/shop/${item.id}`}
                   style={{

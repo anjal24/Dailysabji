@@ -33,7 +33,7 @@ const Vegetables = ({ vegetablesData = [], sharedIndex }) => {
 
             return (
               <div key={item.subServiceName} className="vegetables-item">
-                {/* YAHAN DEKHIYE: Link ke andar Image aur Title hai */}
+                {/* here see image and title present inside of link  */}
                 <Link
                   to={`/shop/${item.id}`}
                   style={{ textDecoration: "none", color: "inherit" }}

@@ -32,7 +32,7 @@ const Shop = ({ data }) => {
           }}
         >
           {data.map((item) => {
-            // Har item ka unique price calculate karein
+            // each item calculate unique..
             const categoryList = data.filter(
               (c) => c?.service?.serviceName === item?.service?.serviceName,
             );
@@ -81,7 +81,7 @@ const Shop = ({ data }) => {
     );
   }
 
-  // --- CASE 2: Agar Vendor click kiya hai (With ID) ---
+  // --- CASE 2: if vender have click with id  ---
   const selectedProduct = data.find((item) => String(item.id) === id);
   const remainingProducts = data.filter((item) => String(item.id) !== id);
 
@@ -168,7 +168,7 @@ const Shop = ({ data }) => {
           </button>
         </div>
       </div>
-      {/* Suggestions code same rahega niche */}
+      {/* Suggestions code will same  */}
     </div>
   );
 };

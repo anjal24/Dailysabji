@@ -1,23 +1,23 @@
 /* The main container - UPDATED */
 .header {
-  position: fixed;        /* Isse Navbar hamesha screen par rahega */
+  position: fixed;        
   top: 0;
   left: 0;
-  width: 100%;           /* Poori screen ki width cover karega */
-  z-index: 1000;         /* Isse Navbar baaki content (cards/images) ke upar dikhega */
+  width: 100%;           
+  z-index: 1000;         
   
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
   background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Halka shadow taaki white background par alag dikhe */
-  box-sizing: border-box; /* Padding ko width ke andar rakhne ke liye */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+  box-sizing: border-box; 
 }
 
-/* Shop page ke content ko Navbar ke neeche laane ke liye */
+/* Shop page content down  */
 .shop-page, .cart-page, .fruit-container, .vegetable-container {
-  margin-top: 80px; /* Navbar ki height jitna gap dena zaroori hai */
+  margin-top: 80px; /* height of navbaar gap*/
 }
 
 /* The list of links */
@@ -83,14 +83,14 @@
 }
 .carousel-window {
   width: 100%;
-  overflow: hidden; /* Bahar ki cheezein chhupane ke liye */
+  overflow: hidden;  
   padding: 20px 0;
 }
 
 .fruit-slider-track, .new-carousel-track {
   display: flex;
   gap: 20px;
-  /* transition humne inline style (Fruits.jsx) mein likhi hai, wo sahi hai */
+  
 }
 
 
