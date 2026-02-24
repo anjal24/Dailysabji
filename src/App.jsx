@@ -10,6 +10,8 @@ import Navbar from "./Navbar";
 import All from "./All";
 import Fruits from "./Fruits";
 import Vegetables from "./Vegetables";
+import Shop from "./shop";
+import Cart from "./cart";
 
 function App() {
   const [data, setData] = useState([]);
@@ -40,6 +42,11 @@ function App() {
   return (
     <Routes>
       <Route element={<Navbar />}>
+        <Route path="cart" element={<Cart />} />
+        {/* shop */}
+        {/* App.jsx mein shop route ko aise update karein */}
+        <Route path="shop" element={<Shop data={data} />} />
+        <Route path="shop/:id" element={<Shop data={data} />} />
         <Route path="/" element={<Home />}>
           <Route
             index
